@@ -1,5 +1,7 @@
 # 100-Days-Of-Python-Code
 I will be coding various projects using Python with an intention to strengthen my Python skills.
+I will be developing projects that I will interact with in the command line, learn web development, 
+web scraping and many other development-based skills.
 
 ## Day 7
 In this section, the focus is in developing a word-guessing game that will allow a user to guess a 
