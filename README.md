@@ -11,5 +11,10 @@ revealed. The user will continue to guess the letters up until the word is compl
 the user has used up all their lives which are 6 lives, this is be demonstrated by the ASCII art of 
 a hangman. If the user guesses an incorrect letter, a man who is hanging himself will start to be
 drawn, when a full hangman is drawn, that will symbolize that the user did not get the word and 
-the user's lives are depleted. 
+the user's lives are depleted.
+
+## Day 8
+This day was focused on developing an encoding and decoding algorithm that is based on the caeser
+encryption method that allows a user to send an encrypted message and allow the decryption of that
+message as well.
 
