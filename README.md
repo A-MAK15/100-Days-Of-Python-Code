@@ -18,3 +18,8 @@ This day was focused on developing an encoding and decoding algorithm that is ba
 encryption method that allows a user to send an encrypted message and allow the decryption of that
 message as well.
 
+## Day 9
+Silent Auction is a system that allows bidders to bid silently without them knowing what other 
+bidders have bidded. The highest bidder will be revealed after everyone has submitted their bid and 
+there are no more bids that are accepted.
+
