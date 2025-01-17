@@ -23,3 +23,6 @@ Silent Auction is a system that allows bidders to bid silently without them know
 bidders have bidded. The highest bidder will be revealed after everyone has submitted their bid and 
 there are no more bids that are accepted.
 
+## Day 9
+Basic calculator app to perform basic calculations utilizing basic operators.
+
