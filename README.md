@@ -27,5 +27,6 @@ there are no more bids that are accepted.
 Basic calculator app to perform basic calculations utilizing basic operators.
 
 ## Day 11
-Black Jack 
+The program for this day was to develop a blackjack game that would allow a user to play with the 
+computer. The functionality of this game includes some of the main rules while omitting some features.
 
