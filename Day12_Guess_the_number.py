@@ -11,26 +11,37 @@ hard_attempts = 5
 easy_attempts = 10
 
 def guess_game():
-    user_guess = int(input("Make a guess : "))
     attempt = difficulty()
-    while attempt < 0:
+    # print(attempt)
+    user_guess = int(input("Make a guess : "))
+    while attempt > 0:
+        # print("Too high")
         if user_guess > num_to_guess:
             print("Too high")
-            user_guess = input("Guess again : ")
             attempt -= 1
+            print(f"You have {attempt} attempts remaining to guess the number")
+            user_guess = int(input("Guess again : "))
 
-    while attempt < 0:
-        if user_guess < num_to_guess:
+        elif user_guess < num_to_guess:
             print("Too low")
-            user_guess = input("Guess again : ")
             attempt -= 1
+            print(f"You have {attempt} attempts remaining to guess the number")
+            user_guess = int(input("Guess again : "))
 
     if user_guess == num_to_guess:
         print("You got it, Nice work !!!!")
 
 
+    # while attempt > 0:
+    #     if user_guess < num_to_guess:
+    #         print("Too low")
+    #         user_guess = input("Guess again : ")
+    #         attempt -= 1
+    #         print(f"You have {attempt} attempts remaining to guess the number")
+
+
 def difficulty():
-    attempts = 0
+    attempts = 100
     level = input("Choose a difficulty. Type 'easy' or 'hard': ")
     if level == "easy":
         attempts = easy_attempts
@@ -39,4 +50,5 @@ def difficulty():
 
     return attempts
 
+guess_game()
 
