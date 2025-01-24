@@ -30,3 +30,11 @@ Basic calculator app to perform basic calculations utilizing basic operators.
 The program for this day was to develop a blackjack game that would allow a user to play with the 
 computer. The functionality of this game includes some of the main rules while omitting some features.
 
+## Day 12
+This project was about allowing a user to guess the number that is randomly generated, if they guessed
+incorrect, they would be informed if their guess was high or low, these guesses will continue up until
+the number of attempts are depleted or the number guessed is correct. 
+
+## Day 13 and 14
+
+
