@@ -36,5 +36,8 @@ incorrect, they would be informed if their guess was high or low, these guesses 
 the number of attempts are depleted or the number guessed is correct. 
 
 ## Day 13 and 14
-
+These two days focused on a comparative program based on the number of followers a user has, two public
+figures will be randomly shown on the screen then a user will guess which one has more Instagram followers
+than the other. If guessed correctly, the user will continue to guess, if guessed incorrectly, the game will
+abort and the final score of the user will be shown.
 
