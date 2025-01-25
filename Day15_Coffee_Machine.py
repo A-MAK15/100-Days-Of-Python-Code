@@ -39,9 +39,15 @@ coffee = resources["coffee"]
 milk = resources["milk"]
 
 # print(resources["coffee"])
+# TODO 4 : Check Availability of resources - Done
 
 # TODO 1 : Ask user what they want, once action is done, ask again
 
+def report(updated_water, updated_milk, updated_coffee, updated_money):
+        print(f"Water: {updated_water} ml")
+        print(f"Milk: {updated_milk} ml")
+        print(f"Coffee: {updated_coffee} g")
+        print(f"Money: ${updated_money} ")
 
 def ordering():
     customer_order = input("What would you like? (espresso/latte/cappuccino): ")
@@ -53,13 +59,13 @@ def ordering():
         new_water = resources["water"] - esp_water
         new_coffee = resources["coffee"] - esp_coffee
 
-        if water <= esp_water:
-            if coffee <= esp_coffee:
-                return new_water, new_coffee
+        if resources["water"] > esp_water:
+            if resources["coffee"] > esp_coffee:
+                return new_water, new_coffee, esp_cost
             else:
-                print("Sorry, there isn't enough Coffee")
+                return "Sorry, there isn't enough Coffee"
         else:
-            print("Sorry, there isn't enough Water")
+            return "Sorry, there isn't enough Water"
 
     elif customer_order == "latte":
         lat_water = latte["ingredients"]["water"]
@@ -70,17 +76,30 @@ def ordering():
         new_water = resources["water"] - lat_water
         new_milk = resources["milk"] - lat_milk
         new_coffee = resources["coffee"] - lat_coffee
-        
-        if water <= lat_water:
-            if coffee <= lat_coffee:
-                if milk <= lat_milk:
-                    return new_water, new_milk, new_coffee
+
+        if water > lat_water:
+            if coffee > lat_coffee:
+                if milk > lat_milk:
+                    # return new_water, new_coffee, new_milk, lat_cost
+                    report(new_water, new_coffee, new_milk, lat_cost)
+                    return " "
                 else:
-                    print("Sorry, there isn't enough Milk")
+                    return "Sorry, there isn't enough Milk"
             else:
-                print("Sorry, there isn't enough Coffee")
+                return "Sorry, there isn't enough Coffee"
         else:
-            print("Sorry, there isn't enough Water")
+            return "Sorry, there isn't enough Water"
+
+        # if water <= lat_water:
+        #     if coffee <= lat_coffee:
+        #         if milk <= lat_milk:
+        #             return new_water, new_milk, new_coffee
+        #         else:
+        #             print("Sorry, there isn't enough Milk")
+        #     else:
+        #         print("Sorry, there isn't enough Coffee")
+        # else:
+        #     print("Sorry, there isn't enough Water")
 
     elif customer_order == "cappuccino":
         cap_water = cappuccino["ingredients"]["water"]
@@ -91,25 +110,38 @@ def ordering():
         new_water = resources["water"] - cap_water
         new_milk = resources["milk"] - cap_milk
         new_coffee = resources["coffee"] - cap_coffee
-        
-        if water <= cap_water:
-            if coffee <= cap_coffee:
-                if milk <= cap_milk:
-                    return new_water, new_milk, new_coffee
+
+        if water > cap_water:
+            if coffee > cap_coffee:
+                if milk > cap_milk:
+                    # return new_water, new_coffee, new_milk, cap_cost
+                    report(new_water, new_coffee, new_milk, cap_cost)
+                    return " "
                 else:
-                    print("Sorry, there isn't enough Milk")
+                    return "Sorry, there isn't enough Milk"
             else:
-                print("Sorry, there isn't enough Coffee")
+                return "Sorry, there isn't enough Coffee"
         else:
-            print("Sorry, there isn't enough Water")
+            return "Sorry, there isn't enough Water"
+
+        # if water <= cap_water:
+        #     if coffee <= cap_coffee:
+        #         if milk <= cap_milk:
+        #             return new_water, new_milk, new_coffee
+        #         else:
+        #             print("Sorry, there isn't enough Milk")
+        #     else:
+        #         print("Sorry, there isn't enough Coffee")
+        # else:
+        #     print("Sorry, there isn't enough Water")
 
 # TODO 2 : Turn off the coffee machine - Done
 coffee_state = True
-# TODO 3 : When report if requested in the prompt, return current resources - Done
+# TODO 3 : When report is requested in the prompt, return current resources - Done
+
 while coffee_state:
     print(ordering())
     coffee_state = False
-# TODO 4 : Check Availability of resources - Done
 
 # TODO 5 : Request coins if there are enough resources
 # TODO 6 : Check if the funds received are enough
