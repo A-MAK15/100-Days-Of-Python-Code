@@ -159,7 +159,7 @@ def ordering():
             return "Sorry, there isn't enough Water"
 
     elif user_prompt() == "report":
-        report(water, coffee, milk, cost)
+        report(water, coffee, milk, cost) #find a way to invoke this fucntion
 
 
         # if water <= cap_water:
