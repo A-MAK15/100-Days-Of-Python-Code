@@ -41,3 +41,7 @@ figures will be randomly shown on the screen then a user will guess which one ha
 than the other. If guessed correctly, the user will continue to guess, if guessed incorrectly, the game will
 abort and the final score of the user will be shown.
 
+## Day 15
+This day focused on developing a coffee machine program that allows users to purchase coffee of their liking provided
+that the ingredients of that coffee exist. The report of the coffee machine shop can be generated to check the available
+ingredients after a purchase.
