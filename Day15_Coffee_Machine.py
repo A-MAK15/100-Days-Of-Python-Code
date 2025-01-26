@@ -88,24 +88,35 @@ def ordering():
         esp_coffee = espresso["ingredients"]["coffee"]
         esp_cost = espresso["cost"]
 
-        new_water = resources["water"] - esp_water
-        new_coffee = resources["coffee"] - esp_coffee
-
         if resources["water"] > esp_water:
             if resources["coffee"] > esp_coffee:
-                if balance > esp_cost :
-                    transaction(balance, esp_cost)
-                    stock = input("Do you want a report : ")
-                    if stock == "Yes":
-                        # report(new_water, new_coffee, cap_cost)
-                        print(f"Water: {new_water} ml")
-                        print(f"Coffee: {new_coffee} g")
-                        print(f"Money: ${esp_cost} ")
-                        print()
-                    return new_water, new_coffee, esp_cost
+                    insert = True
+                    coin_count = 0
+                    while insert:
+                        coin = process_coins()
+                        if coin == "Done":
+                            insert = False
+                        else:
+                            coin_count += coin
+                    # print(coin_count)
+                    if transaction(coin_count, esp_cost) == "Ops!, Insufficient funds":
+                        print("Come when you have money!")
+                    else:
+                        new_water = resources["water"] - esp_water
+                        new_coffee = resources["coffee"] - esp_coffee
+                        stock = input("Do you want a report : ")
+                        if stock == "Yes":
+                            # transaction(coin_count, cap_cost)
+                            # report(new_water, new_milk, new_coffee, coin_count)
+                            print(f"Water: {new_water} ml")
+                            print(f"Coffee: {new_coffee} g")
+                            print(f"Money: ${coin_count} ")
+                            print()
+                        else:
+                            print("Enjoy your day!!!")
 
-                else:
-                    return "Ops!, Insufficient funds"
+                        # return new_water, new_milk,new_coffee , cap_cost
+                        return " "
             else:
                 return "Sorry, there isn't enough Coffee"
         else:
@@ -124,12 +135,27 @@ def ordering():
         if water > lat_water:
             if coffee > lat_coffee:
                 if milk > lat_milk:
-                    transaction(balance, lat_cost)
-                    stock = input("Do you want a report : ")
-                    if stock == "Yes":
-                        report(new_water, new_milk, new_coffee, lat_cost)
-                        print()
-                    return new_water,new_milk, new_coffee, lat_cost
+                    insert = True
+                    coin_count = 0
+                    while insert:
+                        coin = process_coins()
+                        if coin == "Done":
+                            insert = False
+                        else:
+                            coin_count += coin
+                    # print(coin_count)
+                    if transaction(coin_count, lat_cost) == "Ops!, Insufficient funds":
+                        print("Come when you have money!")
+                    else:
+                        stock = input("Do you want a report : ")
+                        if stock == "Yes":
+                            # transaction(coin_count, cap_cost)
+                            report(new_water, new_milk, new_coffee, coin_count)
+                        else:
+                            print("Enjoy your day!!!")
+
+                        # return new_water, new_milk,new_coffee , cap_cost
+                        return " "
                 else:
                     return "Sorry, there isn't enough Milk"
             else:
@@ -169,21 +195,22 @@ def ordering():
                         else:
                             print("Enjoy your day!!!")
 
-                    return new_water, new_milk,new_coffee , cap_cost
-                        # return " "
+                    # return new_water, new_milk,new_coffee , cap_cost
+                        return " "
                 else:
                     return "Sorry, there isn't enough Milk"
             else:
                 return "Sorry, there isn't enough Coffee"
         else:
             return "Sorry, there isn't enough Water"
+    ordering()
 
 # TODO 2 : Turn off the coffee machine - Done
 coffee_state = True
 # TODO 3 : When report is requested in the prompt, return current resources - Done
 
 while coffee_state:
-    print(ordering())
+    ordering()
     coffee_state = False
 
 # print(process_coins())
