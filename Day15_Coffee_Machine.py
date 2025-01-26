@@ -52,7 +52,7 @@ def report(updated_water, updated_milk, updated_coffee, updated_money):
 
 # TODO 5 : Request coins if there are enough resources
 def process_coins():
-    # count = 0
+    count = 0
     coin = input("Insert coins (quarter, dimes, nickel, pennies), Click 'Done' when you are finished : ")
 
     if coin == "quarter":
@@ -65,16 +65,20 @@ def process_coins():
         coin = 0.01
     elif coin == "Done":
         coin = "Done"
-    return coin
+        return coin
+    count += coin
+    return count
+
+# print(process_coins())
 
 def transaction(bank, cost):
     if bank > cost:
         change = bank - cost
-        return f"Your change is {change}, Enjoy your coffee!"
+        print(f"Your change is {change}, Enjoy your coffee!")
     elif bank < cost:
-        return "Ops!, Insufficient funds"
+        print("Ops!, Insufficient funds")
     elif bank == cost:
-        return "Enjoy your coffee!"
+        print("Enjoy your Beverage!")
 
 def ordering():
     customer_order = input("What would you like? (espresso/latte/cappuccino): ")
@@ -116,16 +120,16 @@ def ordering():
         new_water = resources["water"] - lat_water
         new_milk = resources["milk"] - lat_milk
         new_coffee = resources["coffee"] - lat_coffee
-#Process coins
+# #Process coins
         if water > lat_water:
             if coffee > lat_coffee:
                 if milk > lat_milk:
                     transaction(balance, lat_cost)
                     stock = input("Do you want a report : ")
                     if stock == "Yes":
-                        report(new_water, new_coffee, new_milk, lat_cost)
+                        report(new_water, new_milk, new_coffee, lat_cost)
                         print()
-                    return new_water, new_coffee, new_milk, lat_cost
+                    return new_water,new_milk, new_coffee, lat_cost
                 else:
                     return "Sorry, there isn't enough Milk"
             else:
@@ -149,18 +153,23 @@ def ordering():
                     insert = True
                     coin_count = 0
                     while insert:
-                        process_coins()
-                        coin_count += process_coins
-                        if process_coins == "Done":
+                        coin = process_coins()
+                        if coin == "Done":
                             insert = False
+                        else:
+                            coin_count += coin
+                    # print(coin_count)
+                    if transaction(coin_count, cap_cost) == "Ops!, Insufficient funds":
+                        print("Come when you have money!")
+                    else:
+                        stock = input("Do you want a report : ")
+                        if stock == "Yes":
+                            # transaction(coin_count, cap_cost)
+                            report(new_water, new_milk, new_coffee, coin_count)
+                        else:
+                            print("Enjoy your day!!!")
 
-
-                    transaction(balance, cap_cost)
-                    stock = input("Do you want a report : ")
-                    if stock == "Yes":
-                        report(new_water, new_coffee, new_milk, cap_cost)
-                        print()
-                    return new_water, new_coffee, new_milk, cap_cost
+                    return new_water, new_milk,new_coffee , cap_cost
                         # return " "
                 else:
                     return "Sorry, there isn't enough Milk"
