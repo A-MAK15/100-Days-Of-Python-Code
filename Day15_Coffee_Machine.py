@@ -37,16 +37,12 @@ cappuccino = MENU["cappuccino"]
 water = resources["water"]
 coffee = resources["coffee"]
 milk = resources["milk"]
-balance = 100
+balance = 0
 
 # print(resources["coffee"])
 # TODO 4 : Check Availability of resources - Done
 
 # TODO 1 : Ask user what they want, once action is done, ask again
-
-def user_prompt():
-    customer_order = input("What would you like? (espresso/latte/cappuccino): ")
-    return customer_order
 
 def report(updated_water, updated_milk, updated_coffee, updated_money):
         print(f"Water: {updated_water} ml")
@@ -56,9 +52,8 @@ def report(updated_water, updated_milk, updated_coffee, updated_money):
 
 # TODO 5 : Request coins if there are enough resources
 def process_coins():
-    total = 0
-
-    coin = input("Insert coins (quarter, dimes, nickel, pennies) : ")
+    # count = 0
+    coin = input("Insert coins (quarter, dimes, nickel, pennies), Click 'Done' when you are finished : ")
 
     if coin == "quarter":
         coin = 0.25
@@ -68,13 +63,23 @@ def process_coins():
         coin = 0.05
     elif coin == "pennies":
         coin = 0.01
+    elif coin == "Done":
+        coin = "Done"
+    return coin
 
-    total += coin
-
-    return total
+def transaction(bank, cost):
+    if bank > cost:
+        change = bank - cost
+        return f"Your change is {change}, Enjoy your coffee!"
+    elif bank < cost:
+        return "Ops!, Insufficient funds"
+    elif bank == cost:
+        return "Enjoy your coffee!"
 
 def ordering():
-    if user_prompt() == "espresso":
+    customer_order = input("What would you like? (espresso/latte/cappuccino): ")
+
+    if customer_order == "espresso":
         esp_water = espresso["ingredients"]["water"]
         esp_coffee = espresso["ingredients"]["coffee"]
         esp_cost = espresso["cost"]
@@ -84,10 +89,17 @@ def ordering():
 
         if resources["water"] > esp_water:
             if resources["coffee"] > esp_coffee:
-                if esp_cost > process_coins():
-                    # report(new_water, new_coffee, new_milk, lat_cost)
-                    # return new_water, new_coffee, esp_cost
-                    return " "
+                if balance > esp_cost :
+                    transaction(balance, esp_cost)
+                    stock = input("Do you want a report : ")
+                    if stock == "Yes":
+                        # report(new_water, new_coffee, cap_cost)
+                        print(f"Water: {new_water} ml")
+                        print(f"Coffee: {new_coffee} g")
+                        print(f"Money: ${esp_cost} ")
+                        print()
+                    return new_water, new_coffee, esp_cost
+
                 else:
                     return "Ops!, Insufficient funds"
             else:
@@ -95,25 +107,25 @@ def ordering():
         else:
             return "Sorry, there isn't enough Water"
 
-    elif user_prompt() == "latte":
+    elif customer_order == "latte":
         lat_water = latte["ingredients"]["water"]
         lat_milk = latte["ingredients"]["milk"]
         lat_coffee = latte["ingredients"]["coffee"]
         lat_cost = latte["cost"]
 
-        water = resources["water"] - lat_water
-        milk = resources["milk"] - lat_milk
-        offee = resources["coffee"] - lat_coffee
-
+        new_water = resources["water"] - lat_water
+        new_milk = resources["milk"] - lat_milk
+        new_coffee = resources["coffee"] - lat_coffee
+#Process coins
         if water > lat_water:
             if coffee > lat_coffee:
                 if milk > lat_milk:
-                    # return new_water, new_coffee, new_milk, lat_cost
-                    if lat_cost > process_coins():
-                    # report(new_water, new_coffee, new_milk, lat_cost)
-                        return " "
-                    else:
-                        return "Ops!, Insufficient funds"
+                    transaction(balance, lat_cost)
+                    stock = input("Do you want a report : ")
+                    if stock == "Yes":
+                        report(new_water, new_coffee, new_milk, lat_cost)
+                        print()
+                    return new_water, new_coffee, new_milk, lat_cost
                 else:
                     return "Sorry, there isn't enough Milk"
             else:
@@ -121,57 +133,41 @@ def ordering():
         else:
             return "Sorry, there isn't enough Water"
 
-        # if water <= lat_water:
-        #     if coffee <= lat_coffee:
-        #         if milk <= lat_milk:
-        #             return new_water, new_milk, new_coffee
-        #         else:
-        #             print("Sorry, there isn't enough Milk")
-        #     else:
-        #         print("Sorry, there isn't enough Coffee")
-        # else:
-        #     print("Sorry, there isn't enough Water")
-
-    elif user_prompt() == "cappuccino":
+    elif customer_order == "cappuccino":
         cap_water = cappuccino["ingredients"]["water"]
         cap_coffee = cappuccino["ingredients"]["coffee"]
         cap_milk = cappuccino["ingredients"]["milk"]
         cap_cost = cappuccino["cost"]
 
-        water = resources["water"] - cap_water
-        milk = resources["milk"] - cap_milk
-        coffee = resources["coffee"] - cap_coffee
+        new_water = resources["water"] - cap_water
+        new_milk = resources["milk"] - cap_milk
+        new_coffee = resources["coffee"] - cap_coffee
 
         if water > cap_water:
             if coffee > cap_coffee:
                 if milk > cap_milk:
-                    if transaction(balance, cap_cost) == "Proceed":
-                        print(f"Your change is ${balance}")
-                        return water, coffee, milk, cap_cost
+                    insert = True
+                    coin_count = 0
+                    while insert:
+                        process_coins()
+                        coin_count += process_coins
+                        if process_coins == "Done":
+                            insert = False
+
+
+                    transaction(balance, cap_cost)
+                    stock = input("Do you want a report : ")
+                    if stock == "Yes":
+                        report(new_water, new_coffee, new_milk, cap_cost)
+                        print()
+                    return new_water, new_coffee, new_milk, cap_cost
                         # return " "
-                    else:
-                        return "Ops!, Insufficient funds"
                 else:
                     return "Sorry, there isn't enough Milk"
             else:
                 return "Sorry, there isn't enough Coffee"
         else:
             return "Sorry, there isn't enough Water"
-
-    elif user_prompt() == "report":
-        report(water, coffee, milk, cost) #find a way to invoke this fucntion
-
-
-        # if water <= cap_water:
-        #     if coffee <= cap_coffee:
-        #         if milk <= cap_milk:
-        #             return new_water, new_milk, new_coffee
-        #         else:
-        #             print("Sorry, there isn't enough Milk")
-        #     else:
-        #         print("Sorry, there isn't enough Coffee")
-        # else:
-        #     print("Sorry, there isn't enough Water")
 
 # TODO 2 : Turn off the coffee machine - Done
 coffee_state = True
@@ -184,10 +180,8 @@ while coffee_state:
 # print(process_coins())
 
 # TODO 6 : Check if the funds received are enough
-def transaction(bank, cost):
-    if bank > cost:
-        bank = bank - cost
-        return "Proceed"
+
+
 # TODO 7 : If transaction successful, as the profit will be displayed in the report on its next request.
 
 # TODO 8 : Return change if too much money was given
