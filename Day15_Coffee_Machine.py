@@ -211,8 +211,12 @@ coffee_state = True
 
 while coffee_state:
     ordering()
-    coffee_state = False
-
+    cont = input("Would you like to make an order : ")
+    if cont != "Off":
+        ordering()
+    else:
+        coffee_state = False
+        
 # print(process_coins())
 
 # TODO 6 : Check if the funds received are enough
