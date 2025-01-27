@@ -216,7 +216,8 @@ while coffee_state:
         ordering()
     else:
         coffee_state = False
-        
+        break
+
 # print(process_coins())
 
 # TODO 6 : Check if the funds received are enough
