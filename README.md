@@ -45,3 +45,6 @@ abort and the final score of the user will be shown.
 This day focused on developing a coffee machine program that allows users to purchase coffee of their liking provided
 that the ingredients of that coffee exist. The report of the coffee machine shop can be generated to check the available
 ingredients after a purchase.
+
+## Day 16 
+This day focused on developing the coffee machine utilizing the Object Oriented Programming.
