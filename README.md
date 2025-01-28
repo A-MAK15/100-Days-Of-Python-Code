@@ -47,4 +47,5 @@ that the ingredients of that coffee exist. The report of the coffee machine shop
 ingredients after a purchase.
 
 ## Day 16 
-This day focused on developing the coffee machine utilizing the Object Oriented Programming.
+This day focused on developing the coffee machine utilizing the Object Oriented Programming. The program was recreated with less
+code to take care of.
