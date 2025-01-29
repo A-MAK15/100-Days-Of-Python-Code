@@ -15,8 +15,6 @@ for question in range(0, len(question_data)):
 
 quiz = QuizBrain(question_bank)
 
-for q in range(1, len(question_bank)):
-    print(quiz.question_list)
-
-
+while quiz.still_has_questions():
+    quiz.next_question(question_bank)
 
