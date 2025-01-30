@@ -49,3 +49,6 @@ ingredients after a purchase.
 ## Day 16 
 This day focused on developing the coffee machine utilizing the Object Oriented Programming. The program was recreated with less
 code to take care of.
+
+## Day 17
+This day focused on developing a quiz app through the utilization of OOP
