@@ -28,6 +28,7 @@ for direction in range(1, 101):
     random_num = random.randint(1, 100)
     random_color = random.choice(color)
     timmy_the_turtle.color(random_color)
+    timmy_the_turtle.speed(100)
     zigzag(random_num)
     zongzeng(random_num)
     timmy_the_turtle.left(90)
