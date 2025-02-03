@@ -8,9 +8,17 @@ timmy_the_turtle.color("DarkMagenta")
 
 timmy_the_turtle.pensize(10)
 
-color = ["DarkMagenta", "bisque3", "CadetBlue", "blue4", "chocolate1", "coral"]
+screen = Screen()
+screen.colormode(255)
 
-# print(random_color)
+def random_colour():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    rgb = (r, g, b)
+    return rgb
+
+# print(random_colour())
 
 def zigzag(num):
     timmy_the_turtle.forward(num)
@@ -24,10 +32,9 @@ def zongzeng(no):
     timmy_the_turtle.forward(no)
     timmy_the_turtle.right(90)
 
-for direction in range(1, 101):
+for direction in range(1, 200):
     random_num = random.randint(1, 100)
-    random_color = random.choice(color)
-    timmy_the_turtle.color(random_color)
+    timmy_the_turtle.color(random_colour())
     timmy_the_turtle.speed(100)
     zigzag(random_num)
     zongzeng(random_num)
