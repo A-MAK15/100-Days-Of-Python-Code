@@ -52,6 +52,7 @@ def row():
         dot_draw()
         row_length += 1
     tim.teleport(0, 70)
+    dot_draw()
 
 while row_height < 5:
     row()
