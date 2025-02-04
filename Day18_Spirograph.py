@@ -29,3 +29,35 @@ for circle in range(int(360/10)):
 
 screen = Screen()
 screen.exitonclick()
+
+## Hirst
+
+from turtle import Turtle, Screen
+
+tim = Turtle()
+
+color_list = [(223, 232, 241), (245, 231, 238), (231, 243, 236), (204, 159, 107), (231, 213, 109), (134, 168, 192), (44, 105, 144), (152, 78, 53), (199, 142, 164), (15, 32, 53), (181, 159, 42), (148, 65, 87), (141, 178, 155), (205, 91, 70), (64, 117, 92), (195, 89, 118), (225, 170, 187), (15, 38, 27), (59, 34, 19)]
+
+row_length = 0
+row_height = 0
+
+def dot_draw():
+    tim.dot(20, "red")
+    tim.penup()
+    tim.forward(100)
+
+def row():
+    global row_length
+    while row_length < 5:
+        dot_draw()
+        row_length += 1
+    tim.teleport(0, 70)
+
+while row_height < 5:
+    row()
+    dot_draw()
+    row_height += 1
+
+
+screen = Screen()
+screen.exitonclick()
