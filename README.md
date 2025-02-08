@@ -52,3 +52,9 @@ code to take care of.
 
 ## Day 17
 This day focused on developing a quiz app through the utilization of OOP
+
+## Day 18
+
+## Day 19
+
+## Day 20
