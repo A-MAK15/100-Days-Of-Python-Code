@@ -54,7 +54,8 @@ code to take care of.
 This day focused on developing a quiz app through the utilization of OOP
 
 ## Day 18
-
+This day focused on understanding the turtle module and creating various kinds of functionalities with this module, the coolest thing
+that I did was to create a random walk with various kinds of RGB colors.
 ## Day 19
 
 ## Day 20
