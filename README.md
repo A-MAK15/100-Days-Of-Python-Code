@@ -56,8 +56,13 @@ This day focused on developing a quiz app through the utilization of OOP
 ## Day 18
 This day focused on understanding the turtle module and creating various kinds of functionalities with this module, the coolest thing
 that I did was to create a random walk with various kinds of RGB colors.
+
 ## Day 19
 Utilized Turtle to develop an ETCH-A-Sketch App that allows the user to draw on the screen using the predetermined directions on the
 keyboard on were the pen is supposed to go.
+
 ## Day 20
 Built the first phase of the snake game which included the body of the snake and the functionality to make the snake to move in various directions.
+
+## Day 21
+This day focused on extending the snake game to its full functionality with different kinds OOP concepts being implemented.
