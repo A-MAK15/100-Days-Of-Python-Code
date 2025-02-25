@@ -43,7 +43,40 @@ for name in names_list:
     print("\n" * 5)
         
     
-# for name in meeting_instances["Person_Name"]:
-#     if name == "Karen Smith":
-#         print(name)
+# print(len(person_level_df))
+# print(person_level_df[4][["Person_Name", "Meeting_Sentiment"]])
 
+exec_count = 0
+exec_count_mean = 0
+
+manager_count = 0
+manager_count_mean = 0
+
+staff_count = 0
+staff_count_mean = 0
+
+for df in person_level_df:
+    if df["Person_Name"].iloc[0] == "Executive":
+        exec_count += 1
+        exec_count_mean += df["Meeting_Sentiment"].describe().loc["mean"]
+        executive_average = exec_count_mean / exec_count
+
+    elif df["Person_Name"].iloc[0] == "Manager":
+        manager_count += 1
+        manager_count_mean += df["Meeting_Sentiment"].describe().loc["mean"]
+        manager_average = manager_count_mean / manager_count
+# print(exec_count)
+
+    elif df["Person_Name"].iloc[0] == "Staff":
+        staff_count += 1
+        staff_count_mean += df["Meeting_Sentiment"].describe().loc["mean"]
+        staff_average = staff_count_mean / staff_count
+# print(staff_count)
+print("Executive Average Meeting Sentiment : ", end="")
+print(round(executive_average, 3))
+
+print("Manager Average Meeting Sentiment : ", end="")
+print(round(manager_average, 3))
+
+print("Staff Average Meeting Sentiment : ", end="")
+print(round(staff_average, 3))
