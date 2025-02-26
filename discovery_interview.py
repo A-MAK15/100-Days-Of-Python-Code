@@ -85,3 +85,11 @@ print(round(staff_average, 3))
 for x in range (len(person_df)):
     print(person_df[x]["Person_Name"].iloc[0], ": ", end="")
     print(len(person_df[x]["Person_Name"]))
+
+plt.figure(figsize=(8, 6))
+sns.histplot(meeting_instances["Meeting_Sentiment"], bins=25, kde=True)
+plt.title("Distribution of Meeting sentiments")
+plt.xlabel("Meeting sentiments")
+plt.ylabel("Frequency")
+plt.grid(True)
+plt.show()
