@@ -80,3 +80,8 @@ print(round(manager_average, 3))
 
 print("Staff Average Meeting Sentiment : ", end="")
 print(round(staff_average, 3))
+
+# person_df[5]
+for x in range (len(person_df)):
+    print(person_df[x]["Person_Name"].iloc[0], ": ", end="")
+    print(len(person_df[x]["Person_Name"]))
