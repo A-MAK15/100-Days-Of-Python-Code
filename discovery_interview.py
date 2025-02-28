@@ -93,3 +93,57 @@ plt.xlabel("Meeting sentiments")
 plt.ylabel("Frequency")
 plt.grid(True)
 plt.show()
+
+#Improvement
+daily_count = 0
+daily_mean = 0
+
+weekly_count = 0
+weekly_mean = 0
+
+fortnight_count = 0
+fortnight_mean = 0
+
+monthly_count = 0
+monthly_mean = 0
+
+meeting_instances_sorted = meeting_instances.sort_values(by="Meeting_ID", ascending=True)
+meeting_instances_sorted = meeting_instances_sorted.reset_index(drop=True)
+meeting_instances_sorted
+# Daily
+for meeting_type in meeting_metadata["Meeting_ID"]:
+    if meeting_type == 101 or meeting_type == 106 or meeting_type == 107 or meeting_type == 112:
+        daily_df = meeting_instances_sorted[meeting_instances_sorted["Meeting_ID"] == meeting_type]
+        daily_mean += daily_df["Meeting_Sentiment"].describe().loc["mean"]
+        daily_count += 1
+        
+    elif meeting_type == 102 or meeting_type == 105:
+        weekly_df = meeting_instances_sorted[meeting_instances_sorted["Meeting_ID"] == meeting_type]
+        weekly_mean += weekly_df["Meeting_Sentiment"].describe().loc["mean"]
+        weekly_count += 1
+
+    elif meeting_type == 103 or meeting_type == 111:
+        fortnight_df = meeting_instances_sorted[meeting_instances_sorted["Meeting_ID"] == meeting_type]
+        fortnight_mean += fortnight_df["Meeting_Sentiment"].describe().loc["mean"]
+        fortnight_count += 1
+        
+    elif meeting_type == 104 or meeting_type == 108 or meeting_type == 109 or meeting_type == 110 or meeting_type == 113 or meeting_type == 114:
+        monthly_df = meeting_instances_sorted[meeting_instances_sorted["Meeting_ID"] == meeting_type]
+        monthly_mean += monthly_df["Meeting_Sentiment"].describe().loc["mean"]
+        monthly_count += 1
+        # print(monthly_df["Meeting_Sentiment"].describe().loc["mean"])
+print("Daily Average Meeting Sentiment ", end= "")
+print(round(daily_mean / daily_count, 3))
+print("\n")
+
+print("Weekly Average Meeting Sentiment ", end= "")
+print(round(weekly_mean / weekly_count, 3))
+print("\n")
+
+print("Fortnight Average Meeting Sentiment ", end= "")
+print(round(fortnight_mean / fortnight_count, 3))
+print("\n")
+
+print("Monthly Average Meeting Sentiment ", end= "")
+print(round(monthly_mean / monthly_count, 3))
+print("\n")
